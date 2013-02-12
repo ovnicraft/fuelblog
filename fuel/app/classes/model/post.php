@@ -6,6 +6,7 @@ class Model_Post extends Model
 	protected static $_properties = array(
 		'id',
 		'name',
+		'title',
 		'body_short',
 		'body',
 		'status',
@@ -30,6 +31,7 @@ class Model_Post extends Model
 	{
 		$val = Validation::forge($factory);
 		$val->add_field('name', 'Name', 'required|max_length[255]');
+		$val->add_field('title', 'Title', 'required|max_length[255]');
 		$val->add_field('body_short', 'Body Short', 'required');
 		$val->add_field('body', 'Body', 'required');
 		$val->add_field('status', 'Status', 'required');

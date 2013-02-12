@@ -9,6 +9,7 @@ class Create_posts
 		\DBUtil::create_table('posts', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true),
 			'name' => array('constraint' => 255, 'type' => 'varchar'),
+			'title' => array('constraint' => 255, 'type' => 'varchar'),
 			'body_short' => array('type' => 'text'),
 			'body' => array('type' => 'text'),
 			'status' => array('constraint' => 1, 'type' => 'int'),
