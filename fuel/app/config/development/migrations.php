@@ -9,6 +9,7 @@ return array(
 				0 => '001_create_posts',
 				1 => '002_create_categories',
 				2 => '003_create_languages',
+				3 => '004_create_users',
 			),
 		),
 		'module' => 
