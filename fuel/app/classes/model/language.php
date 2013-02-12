@@ -11,7 +11,7 @@ class Model_Language extends Model
 		'updated_at',
 	);
 
-	protected static $_has_many=array('posts');
+	protected static $_has_many=array('posts','comments');
 
 	protected static $_observers = array(
 		'Orm\Observer_CreatedAt' => array(
