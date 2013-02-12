@@ -10,6 +10,7 @@ return array(
 				1 => '002_create_categories',
 				2 => '003_create_languages',
 				3 => '004_create_users',
+				4 => '005_create_comments',
 			),
 		),
 		'module' => 
