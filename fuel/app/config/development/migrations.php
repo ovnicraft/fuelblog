@@ -12,6 +12,7 @@ return array(
 				3 => '004_create_users',
 				4 => '005_create_comments',
 				5 => '006_create_uploads',
+				6 => '007_create_posts_uploads',
 			),
 		),
 		'module' => 
