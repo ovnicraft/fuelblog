@@ -11,6 +11,7 @@ return array(
 				2 => '003_create_languages',
 				3 => '004_create_users',
 				4 => '005_create_comments',
+				5 => '006_create_uploads',
 			),
 		),
 		'module' => 
