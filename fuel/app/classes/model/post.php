@@ -18,6 +18,8 @@ class Model_Post extends Model
 
 	protected static $_has_many=array('comments');
 
+	protected static $_many_many=array('uploads');
+
 	protected static $_observers = array(
 		'Orm\Observer_CreatedAt' => array(
 			'events' => array('before_insert'),
