@@ -6,5 +6,19 @@
  */
 
 return array(
-
+	'active' => Fuel::$env,
+	'development' => array(
+		'type' => 'mysql',
+		'connection' => array(
+			'hostname' => '127.0.0.1',
+			'database' => 'fuel_blog',
+			'username' => 'root',
+			'password' => 'admin',
+			'persistent' => false,
+		),
+	'table_prefix' => '',
+	'charset' => 'utf8',
+	'caching' => false,
+	'profiling' => false,
+	)
 );
