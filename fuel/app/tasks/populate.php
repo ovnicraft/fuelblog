@@ -128,7 +128,7 @@ class Populate
 	{
 		$user=\Model_User::forge(array(
 			'username' => 'admin',
-			'password' => 'admin',
+			'password' => crypt('admin','$2a$15$admin$'),
 			'email' => 'admin@something.com',
 			'status' => 1,
 			'level' => 1
@@ -138,7 +138,7 @@ class Populate
 
 		$user=\Model_User::forge(array(
 			'username' => 'johndoe',
-			'password' => 'johndoe',
+			'password' => crypt('johndoe','$2a$15$johndoe$'),
 			'email' => 'johndoe@something.com',
 			'status' => 1,
 			'level' => 2
@@ -148,7 +148,7 @@ class Populate
 
 		$user=\Model_User::forge(array(
 			'username' => 'janedoe',
-			'password' => 'janedoe',
+			'password' => crypt('janedoe','$2a$15$janedoe$'),
 			'email' => 'janedoe@something.com',
 			'status' => 1,
 			'level' => 2
