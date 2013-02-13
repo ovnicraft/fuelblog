@@ -118,6 +118,86 @@ class Populate
 	}
 
 	/**
+	 * This method is for populating users table.
+	 *
+	 * Usage (from run function):
+	 *
+	 * self::populate_users();
+	 */
+	private static function populate_users()
+	{
+		$user=Model_User::forge(array(
+			'username' => 'admin',
+			'password' => 'admin',
+			'email' => 'admin@something.com',
+			'status' => 1,
+			'level' => 1
+		));
+
+		$user->save();
+
+		$user=Model_User::forge(array(
+			'username' => 'johndoe',
+			'password' => 'johndoe',
+			'email' => 'johndoe@something.com',
+			'status' => 1,
+			'level' => 2
+		));
+
+		$user->save();
+
+		$user=Model_User::forge(array(
+			'username' => 'janedoe',
+			'password' => 'janedoe',
+			'email' => 'janedoe@something.com',
+			'status' => 1,
+			'level' => 2
+		));
+
+		$user->save();
+	}
+
+	/**
+	 * This method is for populating comments table.
+	 *
+	 * Usage (from run function):
+	 *
+	 * self::populate_comments();
+	 */
+	private static function populate_comment()
+	{
+		$comment=Model_Comment::forge(array(
+			'comment' => 'Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.',
+			'user_id' => 2,
+			'status' => 1,
+			'post_id' => 1,
+			'language_id' => 2
+		));
+
+		$comment->save();
+
+		$comment=Model_Comment::forge(array(
+			'comment' => 'Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.',
+			'user_id' => 2,
+			'status' => 1,
+			'post_id' =>,
+			'language_id' => 2
+		));
+
+		$comment->save();
+
+		$comment=Model_Comment::forge(array(
+			'comment' => 'Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.',
+			'user_id' => 2,
+			'status' => 1,
+			'post_id' => 1,
+			'language_id' => 2
+		));
+
+		$comment->save();
+	}
+
+	/**
 	 * This method gets ran when a valid method name is not used in the command.
 	 *
 	 * Usage (from command line):
@@ -129,7 +209,8 @@ class Populate
 		self::populate_posts();
 		self::populate_categories();
 		self::populate_languages();
-			
+		self::populate_users();
+		self::populate_comments();
 	}
 }
 
