@@ -173,6 +173,7 @@ a:hover {
 .row {
   margin-left: -20px;
   *zoom: 1;
+  margin-bottom:10px;
 }
 
 .row:before,
@@ -183,6 +184,11 @@ a:hover {
 
 .row:after {
   clear: both;
+}
+
+.row .span16 a
+{
+	margin-right:3px;
 }
 
 [class*="span"] {

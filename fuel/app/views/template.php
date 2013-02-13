@@ -12,6 +12,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="span16">
+				<?php echo View::forge('partials/menu'); ?>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span16">
 				<h1><?php echo $title; ?></h1>
 				<hr>
 <?php if (Session::get_flash('success')): ?>
