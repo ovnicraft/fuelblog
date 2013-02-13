@@ -35,6 +35,7 @@ class Controller_Post extends Controller_Template
 			{
 				$post = Model_Post::forge(array(
 					'name' => Input::post('name'),
+					'title' => Input::post('title'),
 					'body_short' => Input::post('body_short'),
 					'body' => Input::post('body'),
 					'status' => Input::post('status'),
@@ -80,6 +81,7 @@ class Controller_Post extends Controller_Template
 		if ($val->run())
 		{
 			$post->name = Input::post('name');
+			$post->title = Input::post('title');
 			$post->body_short = Input::post('body_short');
 			$post->body = Input::post('body');
 			$post->status = Input::post('status');
@@ -104,6 +106,7 @@ class Controller_Post extends Controller_Template
 			if (Input::method() == 'POST')
 			{
 				$post->name = $val->validated('name');
+				$post->title = $val->validated('title');
 				$post->body_short = $val->validated('body_short');
 				$post->body = $val->validated('body');
 				$post->status = $val->validated('status');
