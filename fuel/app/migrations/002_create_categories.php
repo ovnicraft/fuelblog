@@ -10,7 +10,7 @@ class Create_categories
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true),
 			'name' => array('constraint' => 255, 'type' => 'varchar'),
 			'title' => array('constraint' => 255, 'type' => 'varchar'),
-			'parent_id' => array('constraint' => 11, 'type' => 'int'),
+			'parent_id' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 			'lft' => array('constraint' => 11, 'type' => 'int'),
 			'rght' => array('constraint' => 11, 'type' => 'int'),
 			'status' => array('constraint' => 1, 'type' => 'int'),

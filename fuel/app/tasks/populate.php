@@ -24,7 +24,7 @@ class Populate
 	 */
 	private static function populate_posts()
 	{
-		$post=Model_Post::forge(array(
+		$post=\Model_Post::forge(array(
 			'name' => 'cum-sociis',
 			'title' => 'cum sociis',
 			'body_short' => 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.', 
@@ -36,7 +36,7 @@ class Populate
 
 		$post->save();
 
-		$post=Model_Post::forge(array(
+		$post=\Model_Post::forge(array(
 			'name' => 'cum-sociia',
 			'title' => 'cum sociia',
 			'body_short' => 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.', 
@@ -48,7 +48,7 @@ class Populate
 
 		$post->save();
 
-		$post=Model_Post::forge(array(
+		$post=\Model_Post::forge(array(
 			'name' => 'cum-sociib',
 			'title' => 'cum sociib',
 			'body_short' => 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.', 
@@ -70,7 +70,7 @@ class Populate
 	 */
 	private static function populate_categories()
 	{
-		$category=Model_Category::forge(array(
+		$category=\Model_Category::forge(array(
 			'name' => 'parent',
 			'title' => 'parent',
 			'parent_id' => NULL,
@@ -81,7 +81,7 @@ class Populate
 
 		$category->save();
 
-		$category=Model_Category::forge(array(
+		$category=\Model_Category::forge(array(
 			'name' => 'news',
 			'title' => 'news',
 			'parent_id' => 1,
@@ -102,14 +102,14 @@ class Populate
 	 */
 	private static function populate_languages()
 	{
-		$language=Model_Language::forge(array(
+		$language=\Model_Language::forge(array(
 			'name' => 'sr',
 			'status' => 1
 		));
 
 		$language->save();
 
-		$language=Model_Language::forge(array(
+		$language=\Model_Language::forge(array(
 			'name' => 'eng',
 			'status' => 2
 		));
@@ -126,7 +126,7 @@ class Populate
 	 */
 	private static function populate_users()
 	{
-		$user=Model_User::forge(array(
+		$user=\Model_User::forge(array(
 			'username' => 'admin',
 			'password' => 'admin',
 			'email' => 'admin@something.com',
@@ -136,7 +136,7 @@ class Populate
 
 		$user->save();
 
-		$user=Model_User::forge(array(
+		$user=\Model_User::forge(array(
 			'username' => 'johndoe',
 			'password' => 'johndoe',
 			'email' => 'johndoe@something.com',
@@ -146,7 +146,7 @@ class Populate
 
 		$user->save();
 
-		$user=Model_User::forge(array(
+		$user=\Model_User::forge(array(
 			'username' => 'janedoe',
 			'password' => 'janedoe',
 			'email' => 'janedoe@something.com',
@@ -164,9 +164,9 @@ class Populate
 	 *
 	 * self::populate_comments();
 	 */
-	private static function populate_comment()
+	private static function populate_comments()
 	{
-		$comment=Model_Comment::forge(array(
+		$comment=\Model_Comment::forge(array(
 			'comment' => 'Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.',
 			'user_id' => 2,
 			'status' => 1,
@@ -176,17 +176,17 @@ class Populate
 
 		$comment->save();
 
-		$comment=Model_Comment::forge(array(
+		$comment=\Model_Comment::forge(array(
 			'comment' => 'Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.',
 			'user_id' => 2,
 			'status' => 1,
-			'post_id' =>,
+			'post_id' => 1,
 			'language_id' => 2
 		));
 
 		$comment->save();
 
-		$comment=Model_Comment::forge(array(
+		$comment=\Model_Comment::forge(array(
 			'comment' => 'Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.',
 			'user_id' => 2,
 			'status' => 1,
