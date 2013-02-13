@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="span16">
-				<?php echo View::forge('partials/menu'); ?>
+				<?php echo render('partials/menu'); ?>
 			</div>
 		</div>
 		<div class="row">
