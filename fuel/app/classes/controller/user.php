@@ -5,7 +5,7 @@ class Controller_User extends Controller_Template
 	public function action_index()
 	{
 		$data['users'] = Model_User::find('all',array(
-			'order_by' => array
+			'order_by' => array(
 				'id' => 'desc'
 			)
 		));
