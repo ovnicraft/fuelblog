@@ -11,6 +11,7 @@
 			<th>Lft</th>
 			<th>Rght</th>
 			<th>Status</th>
+			<th>Created</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -24,6 +25,7 @@
 			<td><?php echo $category->lft; ?></td>
 			<td><?php echo $category->rght; ?></td>
 			<td><?php echo $category->status; ?></td>
+			<td><?php echo date('Y-m-d',$category->created_at); ?></td>
 			<td>
 				<?php echo Html::anchor('category/view/'.$category->id, 'View'); ?> |
 				<?php echo Html::anchor('category/edit/'.$category->id, 'Edit'); ?> |

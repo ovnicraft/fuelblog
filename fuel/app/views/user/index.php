@@ -10,6 +10,7 @@
 			<th>Email</th>
 			<th>Status</th>
 			<th>Level</th>
+			<th>Created</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -22,6 +23,7 @@
 			<td><?php echo $user->email; ?></td>
 			<td><?php echo $user->status; ?></td>
 			<td><?php echo $user->level; ?></td>
+			<td><?php echo date('Y-m-d',$user->level); ?></td>
 			<td>
 				<?php echo Html::anchor('user/view/'.$user->id, 'View'); ?> |
 				<?php echo Html::anchor('user/edit/'.$user->id, 'Edit'); ?> |

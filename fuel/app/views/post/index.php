@@ -12,6 +12,7 @@
 			<th>Status</th>
 			<th>Category id</th>
 			<th>Language id</th>
+			<th>Created</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -26,6 +27,7 @@
 			<td><?php echo $post->status; ?></td>
 			<td><?php echo $post->category_id; ?></td>
 			<td><?php echo $post->language_id; ?></td>
+			<td><?php echo date('Y-m-d',$post->created_at); ?></td>
 			<td>
 				<?php echo Html::anchor('post/view/'.$post->id, 'View'); ?> |
 				<?php echo Html::anchor('post/edit/'.$post->id, 'Edit'); ?> |

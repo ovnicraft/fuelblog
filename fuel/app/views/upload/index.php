@@ -9,6 +9,7 @@
 			<th>Location</th>
 			<th>File name</th>
 			<th>Type</th>
+			<th>Created</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -20,6 +21,7 @@
 			<td><?php echo $upload->location; ?></td>
 			<td><?php echo $upload->file_name; ?></td>
 			<td><?php echo $upload->type; ?></td>
+			<td><?php echo date('Y-m-d',$upload->created_at); ?></td>
 			<td>
 				<?php echo Html::anchor('upload/view/'.$upload->id, 'View'); ?> |
 				<?php echo Html::anchor('upload/edit/'.$upload->id, 'Edit'); ?> |

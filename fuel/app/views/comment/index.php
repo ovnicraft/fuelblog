@@ -9,6 +9,7 @@
 			<th>Status</th>
 			<th>Post id</th>
 			<th>Language id</th>
+			<th>Created</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -20,6 +21,7 @@
 			<td><?php echo $comment->status; ?></td>
 			<td><?php echo $comment->post_id; ?></td>
 			<td><?php echo $comment->language_id; ?></td>
+			<td><?php echo date('Y-m-d',$comment->language_id); ?></td>
 			<td>
 				<?php echo Html::anchor('comment/view/'.$comment->id, 'View'); ?> |
 				<?php echo Html::anchor('comment/edit/'.$comment->id, 'Edit'); ?> |

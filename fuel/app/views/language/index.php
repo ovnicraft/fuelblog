@@ -7,6 +7,7 @@
 			<th>Id</th>
 			<th>Name</th>
 			<th>Status</th>
+			<th>Created</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -16,6 +17,7 @@
 			<td><?php echo $language->id; ?></td>
 			<td><?php echo $language->name; ?></td>
 			<td><?php echo $language->status; ?></td>
+			<td><?php echo date('Y-m-d',$language->status); ?></td>
 			<td>
 				<?php echo Html::anchor('language/view/'.$language->id, 'View'); ?> |
 				<?php echo Html::anchor('language/edit/'.$language->id, 'Edit'); ?> |
