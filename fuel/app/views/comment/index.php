@@ -39,3 +39,6 @@
 	<?php echo Html::anchor('comment/create', 'Add new Comment', array('class' => 'btn btn-success')); ?>
 
 </p>
+<p>
+	<?php echo $pagination; ?>
+</p>

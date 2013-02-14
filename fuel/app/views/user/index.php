@@ -41,3 +41,6 @@
 	<?php echo Html::anchor('user/create', 'Add new User', array('class' => 'btn btn-success')); ?>
 
 </p>
+<p>
+	<?php echo $pagination; ?>
+</p>

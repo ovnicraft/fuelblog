@@ -43,3 +43,6 @@
 	<?php echo Html::anchor('category/create', 'Add new Category', array('class' => 'btn btn-success')); ?>
 
 </p>
+<p>
+	<?php echo $pagination; ?>
+</p>

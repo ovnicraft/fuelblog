@@ -35,3 +35,6 @@
 	<?php echo Html::anchor('language/create', 'Add new Language', array('class' => 'btn btn-success')); ?>
 
 </p>
+<p>
+	<?php echo $pagination; ?>
+</p>

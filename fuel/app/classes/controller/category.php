@@ -4,11 +4,22 @@ class Controller_Category extends Controller_Template
 
 	public function action_index()
 	{
+		$pagination=Pagination::forge('pagination', array(
+			'pagination_url' => Uri::base(false).'category/index/',
+			'total_items' => Model_Category::count(array()),
+			'per_page' => Config::get('application_settings.pagination_items'),
+			'uri_segment' => Config::get('application_settings.pagination_uri_segment'),
+			'num_links' => Config::get('application_settings.pagination_num_links')
+		));
+
 		$data['categories'] = Model_Category::find('all',array(
 			'order_by' => array(
 				'id' => 'desc'
-			)
+			),
+			'offset' => $pagination->offset,
+			'limit' => $pagination->per_page
 		));
+		$data['pagination']=$pagination->render();
 		$this->template->title = "Categories";
 		$this->template->content = View::forge('category/index', $data);
 

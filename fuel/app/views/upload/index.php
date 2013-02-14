@@ -39,3 +39,6 @@
 	<?php echo Html::anchor('upload/create', 'Add new Upload', array('class' => 'btn btn-success')); ?>
 
 </p>
+<p>
+	<?php echo $pagination; ?>
+</p>

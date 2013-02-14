@@ -4,11 +4,22 @@ class Controller_Language extends Controller_Template
 
 	public function action_index()
 	{
+		$pagination=Pagination::forge('pagination', array(
+			'pagination_url' => Uri::base(false).'language/index/',
+			'total_items' => Model_Language::count(array()),
+			'per_page' => Config::get('application_settings.pagination_items'),
+			'uri_segment' => Config::get('application_settings.pagination_uri_segment'),
+			'num_links' => Config::get('application_settings.pagination_num_links')
+		));
+
 		$data['languages'] = Model_Language::find('all',array(
 			'order_by' => array(
 				'id' => 'desc'
-			)
+			),
+			'offset' => $pagination->offset,
+			'limit' => $pagination->per_page
 		));
+		$data['pagination']=$pagination->render();
 		$this->template->title = "Languages";
 		$this->template->content = View::forge('language/index', $data);
 

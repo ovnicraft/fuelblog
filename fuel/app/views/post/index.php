@@ -45,3 +45,6 @@
 	<?php echo Html::anchor('post/create', 'Add new Post', array('class' => 'btn btn-success')); ?>
 
 </p>
+<p>
+	<?php echo $pagination; ?>
+</p>
