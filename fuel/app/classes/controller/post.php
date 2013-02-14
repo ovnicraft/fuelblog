@@ -4,7 +4,11 @@ class Controller_Post extends Controller_Template
 
 	public function action_index()
 	{
-		$data['posts'] = Model_Post::find('all');
+		$data['posts'] = Model_Post::find('all',array(
+			'order_by' => array(
+				'id' => 'desc'
+			)
+		));
 		$this->template->title = "Posts";
 		$this->template->content = View::forge('post/index', $data);
 

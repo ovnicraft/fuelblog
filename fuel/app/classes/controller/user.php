@@ -4,7 +4,11 @@ class Controller_User extends Controller_Template
 
 	public function action_index()
 	{
-		$data['users'] = Model_User::find('all');
+		$data['users'] = Model_User::find('all',array(
+			'order_by' => array
+				'id' => 'desc'
+			)
+		));
 		$this->template->title = "Users";
 		$this->template->content = View::forge('user/index', $data);
 

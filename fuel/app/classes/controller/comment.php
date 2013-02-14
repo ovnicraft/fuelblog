@@ -4,7 +4,11 @@ class Controller_Comment extends Controller_Template
 
 	public function action_index()
 	{
-		$data['comments'] = Model_Comment::find('all');
+		$data['comments'] = Model_Comment::find('all',array(
+			'order_by' => array(
+				'id' => 'desc'
+			)
+		));
 		$this->template->title = "Comments";
 		$this->template->content = View::forge('comment/index', $data);
 

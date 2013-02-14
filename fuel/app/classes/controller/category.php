@@ -4,7 +4,11 @@ class Controller_Category extends Controller_Template
 
 	public function action_index()
 	{
-		$data['categories'] = Model_Category::find('all');
+		$data['categories'] = Model_Category::find('all',array(
+			'order_by' => array(
+				'id' => 'desc'
+			)
+		));
 		$this->template->title = "Categories";
 		$this->template->content = View::forge('category/index', $data);
 

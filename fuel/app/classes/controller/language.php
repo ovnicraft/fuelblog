@@ -4,7 +4,11 @@ class Controller_Language extends Controller_Template
 
 	public function action_index()
 	{
-		$data['languages'] = Model_Language::find('all');
+		$data['languages'] = Model_Language::find('all',array(
+			'order_by' => array(
+				'id' => 'desc'
+			)
+		));
 		$this->template->title = "Languages";
 		$this->template->content = View::forge('language/index', $data);
 

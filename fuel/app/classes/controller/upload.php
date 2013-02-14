@@ -4,7 +4,11 @@ class Controller_Upload extends Controller_Template
 
 	public function action_index()
 	{
-		$data['uploads'] = Model_Upload::find('all');
+		$data['uploads'] = Model_Upload::find('all',array(
+			'order_by' => array(
+				'id' => 'desc'
+			)
+		));
 		$this->template->title = "Uploads";
 		$this->template->content = View::forge('upload/index', $data);
 
