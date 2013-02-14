@@ -4,6 +4,7 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
+			<th>Id</th>
 			<th>Name</th>
 			<th>Title</th>
 			<th>Body short</th>
@@ -17,6 +18,7 @@
 	<tbody>
 <?php foreach ($posts as $post): ?>		<tr>
 
+			<td><?php echo $post->id; ?></td>
 			<td><?php echo $post->name; ?></td>
 			<td><?php echo $post->title; ?></td>
 			<td><?php echo $post->body_short; ?></td>

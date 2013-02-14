@@ -4,6 +4,7 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
+			<th>Id</th>
 			<th>User id</th>
 			<th>Status</th>
 			<th>Post id</th>
@@ -14,6 +15,7 @@
 	<tbody>
 <?php foreach ($comments as $comment): ?>		<tr>
 
+			<td><?php echo $comment->id; ?></td>
 			<td><?php echo $comment->user_id; ?></td>
 			<td><?php echo $comment->status; ?></td>
 			<td><?php echo $comment->post_id; ?></td>

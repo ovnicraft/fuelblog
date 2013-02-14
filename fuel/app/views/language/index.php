@@ -4,6 +4,7 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
+			<th>Id</th>
 			<th>Name</th>
 			<th>Status</th>
 			<th></th>
@@ -12,6 +13,7 @@
 	<tbody>
 <?php foreach ($languages as $language): ?>		<tr>
 
+			<td><?php echo $language->id; ?></td>
 			<td><?php echo $language->name; ?></td>
 			<td><?php echo $language->status; ?></td>
 			<td>

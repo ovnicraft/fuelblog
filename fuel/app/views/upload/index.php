@@ -4,6 +4,7 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
+			<th>Id</th>
 			<th>Name</th>
 			<th>Location</th>
 			<th>File name</th>
@@ -14,6 +15,7 @@
 	<tbody>
 <?php foreach ($uploads as $upload): ?>		<tr>
 
+			<td><?php echo $upload->id; ?></td>
 			<td><?php echo $upload->name; ?></td>
 			<td><?php echo $upload->location; ?></td>
 			<td><?php echo $upload->file_name; ?></td>

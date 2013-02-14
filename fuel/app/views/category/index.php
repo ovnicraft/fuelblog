@@ -4,6 +4,7 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
+			<th>Id</th>
 			<th>Name</th>
 			<th>Title</th>
 			<th>Parent id</th>
@@ -16,6 +17,7 @@
 	<tbody>
 <?php foreach ($categories as $category): ?>		<tr>
 
+			<td><?php echo $category->id; ?></td>
 			<td><?php echo $category->name; ?></td>
 			<td><?php echo $category->title; ?></td>
 			<td><?php echo $category->parent_id; ?></td>
