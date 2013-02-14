@@ -37,4 +37,55 @@ class Model_Upload extends Model
 		return $val;
 	}
 
+	public static function add()
+	{
+		$files=array();
+
+		if(!is_dir(DOCROOT.Config::get('application_settings.uploads_folder').date('Y_m'))):
+	
+			mkdir(DOCROOT.Config::get('application_settings.uploads_folder').date('Y_m'),0777,true);
+
+		endif;
+
+		$upload_config=array(
+			'path' => DOCROOT.Config::get('application_settings.uploads_folder').date('Y_m')
+		);
+
+		Upload::process($upload_config);
+
+		if(Upload::is_valid()):
+
+			Upload::save();
+			$files=Upload::get_files();
+
+		else:
+
+			return 0;
+
+		endif;
+
+		$val=Model_Upload::validate('create');
+
+		if($val->run(array(
+			'name' => Input::post('name'),
+			'location' => Config::get('application_settings.uploads_folder').date('Y_m'),
+			'file_name' => $files[0]['filename'],
+			'type' => $files[0]['extension']
+		))):
+
+			$upload=Model_Upload::forge(array(
+				'name' => Input::post('name'),
+				'location' => Config::get('application_settings.uploads_folder').date('Y_m'),
+				'file_name' => $files[0]['filename'],
+				'type' => $files[0]['extension']
+			));
+
+			$upload->save();
+					
+
+		endif;
+
+		return 1;
+	}
+
 }

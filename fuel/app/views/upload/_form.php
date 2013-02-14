@@ -1,4 +1,4 @@
-<?php echo Form::open(); ?>
+<?php echo Form::open(array('enctype'=>'multipart/form-data')); ?>
 
 	<fieldset>
 		<div class="clearfix">
@@ -31,6 +31,16 @@
 			<div class="input">
 				<?php echo Form::input('type', Input::post('type', isset($upload) ? $upload->type : ''), array('class' => 'span4')); ?>
 
+			</div>
+		</div>
+		<div class="clearfix">
+			<?php echo Form::label('File'); ?>
+			<div class="input">
+				<?php 
+					echo Form::file('File', array(
+						'name' => 'uploaded_file'
+					));
+				?>
 			</div>
 		</div>
 		<div class="actions">

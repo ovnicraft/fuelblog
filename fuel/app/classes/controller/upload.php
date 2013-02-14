@@ -29,38 +29,17 @@ class Controller_Upload extends Controller_Template
 	{
 		if (Input::method() == 'POST')
 		{
-			$val = Model_Upload::validate('create');
+			if(Model_Upload::add()):
 			
-			if ($val->run())
-			{
-				$upload = Model_Upload::forge(array(
-					'name' => Input::post('name'),
-					'location' => Input::post('location'),
-					'file_name' => Input::post('file_name'),
-					'type' => Input::post('type'),
-				));
+			else:
 
-				if ($upload and $upload->save())
-				{
-					Session::set_flash('success', 'Added upload #'.$upload->id.'.');
+				Session::set_flash('error', 'Could not upload file');
 
-					Response::redirect('upload');
-				}
-
-				else
-				{
-					Session::set_flash('error', 'Could not save upload.');
-				}
-			}
-			else
-			{
-				Session::set_flash('error', $val->error());
-			}
+			endif;
 		}
 
 		$this->template->title = "Uploads";
 		$this->template->content = View::forge('upload/create');
-
 	}
 
 	public function action_edit($id = null)
