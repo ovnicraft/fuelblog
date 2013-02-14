@@ -29,7 +29,7 @@ class Controller_Post extends Controller_Template
 	{
 		is_null($id) and Response::redirect('Post');
 
-		if ( ! $data['post'] = Model_Post::find($id))
+		if ( ! $data['post'] = Model_Post::find($id,array('related' => array('uploads'))))
 		{
 			Session::set_flash('error', 'Could not find post #'.$id);
 			Response::redirect('Post');
@@ -48,7 +48,7 @@ class Controller_Post extends Controller_Template
 			
 			if ($val->run())
 			{
-				$post = Model_Post::forge(array(
+				$post = new Model_Post(array(
 					'name' => Input::post('name'),
 					'title' => Input::post('title'),
 					'body_short' => Input::post('body_short'),
@@ -56,6 +56,9 @@ class Controller_Post extends Controller_Template
 					'status' => Input::post('status'),
 					'category_id' => Input::post('category_id'),
 					'language_id' => Input::post('language_id'),
+					'uploads' => array(
+						Model_Upload::find(Input::post('upload_id'))
+					)
 				));
 
 				if ($post and $post->save())
@@ -102,6 +105,9 @@ class Controller_Post extends Controller_Template
 			$post->status = Input::post('status');
 			$post->category_id = Input::post('category_id');
 			$post->language_id = Input::post('language_id');
+			$post->uploads = array(
+				Model_Upload::find(Input::post('upload_id'))
+			);
 
 			if ($post->save())
 			{

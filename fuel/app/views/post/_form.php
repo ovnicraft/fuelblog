@@ -10,6 +10,15 @@
 			</div>
 		</div>
 		<div class="clearfix">
+			<?php echo Form::label('Title', 'title'); ?>
+
+			<div class="input">
+				<?php echo Form::input('title', Input::post('title', isset($post) ? $post->title : ''), array('class' => 'span4')); ?>
+
+			</div>
+		</div>
+
+		<div class="clearfix">
 			<?php echo Form::label('Body short', 'body_short'); ?>
 
 			<div class="input">
@@ -49,6 +58,13 @@
 
 			</div>
 		</div>
+		<div class="clearfix">
+			<?php echo Form::label('Upload id', 'upload_id'); ?>
+
+			<div class="input">
+				<?php echo Form::input('upload_id', Input::post('upload_id', (count($post->uploads)) ? $post->uploads[1]->id : ''), array('class' => 'span4')); ?>
+
+			</div>
 		<div class="actions">
 			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
 

@@ -1,5 +1,4 @@
 <h2>Viewing #<?php echo $post->id; ?></h2>
-
 <p>
 	<strong>Name:</strong>
 	<?php echo $post->name; ?></p>
@@ -18,6 +17,9 @@
 <p>
 	<strong>Language id:</strong>
 	<?php echo $post->language_id; ?></p>
+<p>
+	<strong>Upload id:</strong>
+	<?php echo (count($post->uploads)) ? $post->uploads[1]->id : ''; ?></p>
 
 <?php echo Html::anchor('post/edit/'.$post->id, 'Edit'); ?> |
 <?php echo Html::anchor('post', 'Back'); ?>
