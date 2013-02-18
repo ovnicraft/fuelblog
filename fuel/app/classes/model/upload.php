@@ -37,33 +37,36 @@ class Model_Upload extends Model
 		return $val;
 	}
 
-	public static function add()
+	public static function files_uploaded()
 	{
-		$files=array();
+		if(count(Upload::get_files())):
 
-		if(!is_dir(DOCROOT.Config::get('application_settings.uploads_folder').date('Y_m'))):
-	
-			mkdir(DOCROOT.Config::get('application_settings.uploads_folder').date('Y_m'),0777,true);
-
-		endif;
-
-		$upload_config=array(
-			'path' => DOCROOT.Config::get('application_settings.uploads_folder').date('Y_m')
-		);
-
-		Upload::process($upload_config);
-
-		if(Upload::is_valid()):
-
-			Upload::save();
-			$files=Upload::get_files();
+			return true;
 
 		else:
 
-			return 0;
+			return false;
 
 		endif;
+	}
 
+	public static function make_upload_folder()
+	{
+		if(!is_dir(DOCROOT.Config::get('application_settings.uploads_folder').date('Y_m'))):
+
+			mkdir(DOCROOT.Config::get('application_settings.uploads_folder').date('Y_m'),0777,true);
+
+		endif;
+		
+		$upload_config=array(
+				'path' => DOCROOT.Config::get('application_settings.uploads_folder').date('Y_m')
+			);
+
+		return $upload_config;
+	}
+
+	public static function add($files)
+	{
 		$val=Model_Upload::validate('create');
 
 		if($val->run(array(
@@ -82,10 +85,41 @@ class Model_Upload extends Model
 
 			$upload->save();
 					
+			return true;
+
+		else:
+
+			return false;
 
 		endif;
-
-		return 1;
 	}
 
+	public static function update_with_files($files)
+	{
+		$val=Model_Upload::validate('create');
+
+		if($val->run(array(
+			'name' => Input::post('name'),
+			'location' => Config::get('application_settings.uploads_folder').date('Y_m'),
+			'file_name' => $files[0]['filename'],
+			'type' => $files[0]['extension']
+		))):
+
+			$upload=new Model_Upload();
+
+			$upload->name = Input::post('name');
+			$upload->location = Config::get('application_settings.uploads_folder').date('Y_m');
+			$upload->file_name = $files[0]['filename'];
+			$upload->type = $files[0]['extension'];
+
+			$upload->save();
+					
+			return true;
+
+		else:
+
+			return false;
+
+		endif;
+	}
 }

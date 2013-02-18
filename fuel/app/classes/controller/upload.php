@@ -44,11 +44,27 @@ class Controller_Upload extends Controller_Template
 	{
 		if (Input::method() == 'POST')
 		{
-			if(Model_Upload::add()):
-			
-			else:
+			if(Model_Upload::files_uploaded()):
 
-				Session::set_flash('error', 'Could not upload file');
+				$upload_config=Model_Upload::make_upload_folder();
+
+				Upload::process($upload_config);
+
+				if(Upload::is_valid()):
+
+					Upload::save();
+
+					$files=Upload::get_files();
+
+					if(Model_Upload::add($files)):
+					
+					else:
+
+						Session::set_flash('error', 'Could not upload file');
+
+					endif;
+
+				endif;
 
 			endif;
 		}
@@ -67,42 +83,67 @@ class Controller_Upload extends Controller_Template
 			Response::redirect('Upload');
 		}
 
-		$val = Model_Upload::validate('edit');
+		if(input::method() == 'POST'):
 
-		if ($val->run())
-		{
-			$upload->name = Input::post('name');
-			$upload->location = Input::post('location');
-			$upload->file_name = Input::post('file_name');
-			$upload->type = Input::post('type');
+			if(Model_Upload::files_uploaded()):
 
-			if ($upload->save())
-			{
-				Session::set_flash('success', 'Updated upload #' . $id);
+				$upload_config=Model_Upload::make_upload_folder();
 
-				Response::redirect('upload');
-			}
+				Upload::process($upload_config);
 
-			else
-			{
-				Session::set_flash('error', 'Could not update upload #' . $id);
-			}
-		}
+				if(Upload::is_valid()):
 
-		else
-		{
-			if (Input::method() == 'POST')
-			{
-				$upload->name = $val->validated('name');
-				$upload->location = $val->validated('location');
-				$upload->file_name = $val->validated('file_name');
-				$upload->type = $val->validated('type');
+					Upload::save();
 
-				Session::set_flash('error', $val->error());
-			}
+					$files=Upload::get_files();
 
-			$this->template->set_global('upload', $upload, false);
-		}
+					if(Model_Upload::update_with_files($files)):
+				
+					else:
+
+						Session::set_flash('error', 'Could not update upload #' . $id);
+					endif;
+
+				endif;
+
+			else:
+
+				$val = Model_Upload::validate('edit');
+			
+				if($val->run(array(
+					'name' => Input::post('name'),
+					'location' => $upload->location,
+					'file_name' => $upload->file_name,
+					'type' => $upload->type
+				))):
+		
+					$upload->name=Input::post('name');
+
+					if($upload->save()):
+
+						Session::set_flash('success', 'Updated upload #' . $id);
+
+						Response::redirect('upload');
+
+					else:
+
+						Session::set_flash('error', 'Could not update upload #' . $id);
+
+					endif;
+			
+				else:
+
+					$upload->name = $val->validated('name');
+
+					Session::set_flash('error', $val->error());
+
+				endif;
+
+			endif;
+
+		endif;
+
+		$this->template->set_global('upload', $upload, false);
 
 		$this->template->title = "Uploads";
 		$this->template->content = View::forge('upload/edit');
