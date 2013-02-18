@@ -77,13 +77,15 @@ class Controller_Category extends Controller_Template
 
 		$val = Model_Category::validate('edit');
 
-		if ($val->run())
+		if ($val->run(array(
+			'name' => Input::post('name'),
+			'title' => Input::post('title'),
+			'parent_id' => $category->parent_id,
+			'status' => Input::post('status'))))
 		{
 			$category->name = Input::post('name');
 			$category->title = Input::post('title');
-			$category->parent_id = Input::post('parent_id');
-			$category->lft = Input::post('lft');
-			$category->rght = Input::post('rght');
+			$category->parent_id = $category->parent_id;
 			$category->status = Input::post('status');
 
 			if ($category->save())
@@ -106,8 +108,6 @@ class Controller_Category extends Controller_Template
 				$category->name = $val->validated('name');
 				$category->title = $val->validated('title');
 				$category->parent_id = $val->validated('parent_id');
-				$category->lft = $val->validated('lft');
-				$category->rght = $val->validated('rght');
 				$category->status = $val->validated('status');
 
 				Session::set_flash('error', $val->error());
