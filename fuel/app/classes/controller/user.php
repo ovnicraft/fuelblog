@@ -48,15 +48,7 @@ class Controller_User extends Controller_Template
 			
 			if ($val->run())
 			{
-				$user = Model_User::forge(array(
-					'username' => Input::post('username'),
-					'password' => Input::post('password'),
-					'email' => Input::post('email'),
-					'status' => Input::post('status'),
-					'level' => Input::post('level'),
-				));
-
-				if ($user and $user->save())
+				if ($user=Model_User::add())
 				{
 					Session::set_flash('success', 'Added user #'.$user->id.'.');
 

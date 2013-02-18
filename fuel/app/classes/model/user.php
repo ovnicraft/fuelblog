@@ -39,4 +39,25 @@ class Model_User extends Model
 		return $val;
 	}
 
+	public static function add()
+	{
+		$user=new Model_User(array(
+			'username' => Input::post('username'),
+			'password' => crypt(Input::post('username'), '!2y!'.Config::get('blowfish_difficulty').'!'.Input::post('password').'!'),
+			'email' => Input::post('email'),
+			'status' => Input::post('status'),
+			'level' => Input::post('level'),
+		));
+
+		if($user && $user->save()):
+
+			return $user;
+
+		else:
+
+			return false;
+
+		endif;	
+	}
+
 }

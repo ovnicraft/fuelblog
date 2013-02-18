@@ -2329,7 +2329,7 @@ class Populate
 	{
 		$user=\Model_User::forge(array(
 			'username' => 'admin',
-			'password' => crypt('admin','$2a$15$admin$'),
+			'password' => crypt('admin','!2y!'.\Config::get('blowfish_difficulty').'!admin!'),
 			'email' => 'admin@something.com',
 			'status' => 1,
 			'level' => 1
@@ -2339,7 +2339,7 @@ class Populate
 
 		$user=\Model_User::forge(array(
 			'username' => 'johndoe',
-			'password' => crypt('johndoe','$2a$15$johndoe$'),
+			'password' => crypt('admin','!2y!'.\Config::get('blowfish_difficulty').'!johndoe!'),
 			'email' => 'johndoe@something.com',
 			'status' => 1,
 			'level' => 2
@@ -2349,7 +2349,7 @@ class Populate
 
 		$user=\Model_User::forge(array(
 			'username' => 'janedoe',
-			'password' => crypt('janedoe','$2a$15$janedoe$'),
+			'password' => crypt('admin','!2y!'.\Config::get('blowfish_difficulty').'!janedoe!'),
 			'email' => 'janedoe@something.com',
 			'status' => 1,
 			'level' => 2
