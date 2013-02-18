@@ -26,22 +26,6 @@
 			</div>
 		</div>
 		<div class="clearfix">
-			<?php echo Form::label('Lft', 'lft'); ?>
-
-			<div class="input">
-				<?php echo Form::input('lft', Input::post('lft', isset($category) ? $category->lft : ''), array('class' => 'span4')); ?>
-
-			</div>
-		</div>
-		<div class="clearfix">
-			<?php echo Form::label('Rght', 'rght'); ?>
-
-			<div class="input">
-				<?php echo Form::input('rght', Input::post('rght', isset($category) ? $category->rght : ''), array('class' => 'span4')); ?>
-
-			</div>
-		</div>
-		<div class="clearfix">
 			<?php echo Form::label('Status', 'status'); ?>
 
 			<div class="input">

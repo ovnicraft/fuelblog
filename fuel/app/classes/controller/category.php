@@ -48,26 +48,11 @@ class Controller_Category extends Controller_Template
 			
 			if ($val->run())
 			{
-				$category = Model_Category::forge(array(
-					'name' => Input::post('name'),
-					'title' => Input::post('title'),
-					'parent_id' => Input::post('parent_id'),
-					'lft' => Input::post('lft'),
-					'rght' => Input::post('rght'),
-					'status' => Input::post('status'),
-				));
+				Model_Category::add_child_last();
 
-				if ($category and $category->save())
-				{
-					Session::set_flash('success', 'Added category #'.$category->id.'.');
+				Session::set_flash('success', 'Added new category');
 
-					Response::redirect('category');
-				}
-
-				else
-				{
-					Session::set_flash('error', 'Could not save category.');
-				}
+				Response::redirect('category');
 			}
 			else
 			{
