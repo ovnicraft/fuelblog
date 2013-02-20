@@ -10,11 +10,13 @@
 </head>
 <body>
 	<div class="container">
+		<?php if(\Controller_Login::is_user_logged_in()): ?>
 		<div class="row">
 			<div class="span16">
 				<?php echo render('partials/menu'); ?>
 			</div>
 		</div>
+		<?php endif; ?>
 		<div class="row">
 			<div class="span16">
 				<h1><?php echo $title; ?></h1>

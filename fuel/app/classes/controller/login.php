@@ -46,4 +46,9 @@ class Controller_Login extends Controller_Template
 
 		Response::redirect('login');
 	}
+
+	public static function is_user_logged_in()
+	{
+		return isset($_SESSION['user_logged_in']); 
+	}
 } 
