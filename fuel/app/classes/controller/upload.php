@@ -1,6 +1,11 @@
 <?php
-class Controller_Upload extends Controller_Template 
+class Controller_Upload extends Controller_Right 
 {
+	public function before()
+	{
+		parent::before();
+	}
+
 
 	public function action_index()
 	{

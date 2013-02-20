@@ -1,5 +1,5 @@
 <?php
-class Controller_Comment extends Controller_Template 
+class Controller_Comment extends Controller_Right 
 {
 
 	public function action_index()

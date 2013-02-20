@@ -1,6 +1,11 @@
 <?php
-class Controller_User extends Controller_Template 
+class Controller_User extends Controller_Right 
 {
+	public function before()
+	{
+		parent::before();
+	}
+
 
 	public function action_index()
 	{

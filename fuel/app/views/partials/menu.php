@@ -5,3 +5,4 @@
 	echo Html::anchor('user/index','Users');
 	echo Html::anchor('comment/index','Comments');
 	echo Html::anchor('upload/index','Uploads');
+	echo Html::anchor('Login/logout','Log out');

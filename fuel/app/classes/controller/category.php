@@ -1,5 +1,5 @@
 <?php
-class Controller_Category extends Controller_Template 
+class Controller_Category extends Controller_Right 
 {
 
 	public function action_index()
