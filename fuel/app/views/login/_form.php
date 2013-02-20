@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div class="actions">
-			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
+			<?php echo Form::submit('submit', 'Log in', array('class' => 'btn btn-primary')); ?>
 		</div>
 	</fieldset>
 <?php echo Form::close(); ?>
