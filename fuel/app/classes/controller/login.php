@@ -25,8 +25,11 @@ class Controller_Login extends Controller_Template
 
 			if($user):
 
+				session_regenerate_id();
+
 				$_SESSION['user_logged_in']['user_level']=$user->level;
 				$_SESSION['user_logged_in']['user_id']=$user->id;
+				$_SESSION['user_logged_in']['user_time_in']=time();
 
 				Response::redirect('post');
 
