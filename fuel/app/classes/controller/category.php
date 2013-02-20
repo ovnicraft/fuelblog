@@ -80,25 +80,35 @@ class Controller_Category extends Controller_Template
 		if ($val->run(array(
 			'name' => Input::post('name'),
 			'title' => Input::post('title'),
-			'parent_id' => $category->parent_id,
+			'parent_id' => Input::post('parent_id'),
 			'status' => Input::post('status'))))
 		{
-			$category->name = Input::post('name');
-			$category->title = Input::post('title');
-			$category->parent_id = $category->parent_id;
-			$category->status = Input::post('status');
+			if(Input::post('parent_id') === $category->parent_id):
+			
+				$category->name = Input::post('name');
+				$category->title = Input::post('title');
+				$category->parent_id = Input::post('parent_id');
+				$category->status = Input::post('status');
 
-			if ($category->save())
-			{
-				Session::set_flash('success', 'Updated category #' . $id);
+				if ($category->save())
+				{
+					Session::set_flash('success', 'Updated category #' . $id);
 
+					Response::redirect('category');
+				}
+
+				else
+				{
+					Session::set_flash('error', 'Could not update category #' . $id);
+				}
+
+			else:
+
+				Model_Category::move_node($id);
+				
 				Response::redirect('category');
-			}
 
-			else
-			{
-				Session::set_flash('error', 'Could not update category #' . $id);
-			}
+			endif;
 		}
 
 		else
@@ -125,21 +135,10 @@ class Controller_Category extends Controller_Template
 	{
 		is_null($id) and Response::redirect('Category');
 
-		if ($category = Model_Category::find($id))
-		{
-			$category->delete();
+		Model_Category::delete_node($id);
 
-			Session::set_flash('success', 'Deleted category #'.$id);
-		}
-
-		else
-		{
-			Session::set_flash('error', 'Could not delete category #'.$id);
-		}
+		Session::set_flash('success', 'Deleted category #'.$id);
 
 		Response::redirect('category');
-
 	}
-
-
 }
